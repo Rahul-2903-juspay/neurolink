@@ -94,6 +94,8 @@ export type GenerateCommandArgs = BaseCommandArgs & {
   "video-aspect-ratio"?: "9:16" | "16:9";
   /** Enable/disable audio generation in video */
   "video-audio"?: boolean;
+  /** Custom path for generated image output */
+  imageOutput?: string;
 };
 
 /**
@@ -408,6 +410,10 @@ export type GenerateResult = CommandResult & {
   audio?: import("./index.js").TTSResult;
   /** Video generation result when video mode is enabled */
   video?: import("./multimodal.js").VideoGenerationResult;
+  imageOutput?: {
+    base64: string;
+    savedPath?: string; // Local file path where image was saved
+  } | null; // Image generation output
 };
 
 /**
